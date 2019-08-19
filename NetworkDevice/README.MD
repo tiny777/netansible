@@ -1,5 +1,7 @@
 # 0 概述
 
+这个脚本需要实现的功能很简单，就是自动ssh登录到网络设备上，查询相应的白名单，然后将结果导出成excel表格，具体的操作命令如下，对应的设备是华为的AC6605。
+
 ```
 操作步骤
 
@@ -10,9 +12,13 @@ system-view
 wlan
 
 # 查看特定白名单内的信息
-display sta-whitelist-profile name staff-devp
+display sta-whitelist-profile name profilename
 
 ```
+
+- 由于这里使用的是`netmiko`库，所以除了华为的网络设备，思科的设备也能支持，只需要在代码文件中稍作修改即可。
+
+- 相应的命令也可以进行修改成其他的系列命令
 
 
 
@@ -119,10 +125,14 @@ ssh user tinychen authentication-type password
 
 # 5 `def sshLogin`
 
-
+这里使用`netmiko`来对网络设备进行`ssh`登录，考虑到获取到的结果是包含了命令执行过程中的所有套接字，因此得到结果之后，先将其全部写入一个`debug.log`文件中保存记录，再将该次的操作结果写入`cache`文件用于下一步处理。
 
 # 6 `def sort_to_csv`
 
+对于输出的结果进行筛选处理，我们需要用到`re`库的正则表达式，以及`split()`，因为大多数的输出结果是以空格来分列的，因此使用`split()`来处理这些字符是最好不过的了。
 
+最后导出成`csv`文件而不是直接导出excel的`xlsx`文件则是因为`csv`相比`xlsx`更容易读取处理，转成其他格式也更加方便。
 
 # 7  `def csv_to_xlsx_pd`
+
+这里就是使用`pandas`库来将上一步生成的`csv`转为`xlsx`文件了，非常的简单，需要的注意的就是添加的行名和列名参数。
