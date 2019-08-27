@@ -1,0 +1,4 @@
+*.py linguist-language=python
+*.html linguist-language=python
+*.csv linguist-language=python
+*.xlsx linguist-language=python
