@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8
-from netmiko import Netmiko
+from netmiko import SSHDetect,Netmiko
 from netmiko import ConnectHandler
 import time
 import re
@@ -16,8 +16,9 @@ def makeDir(dirs):
 
 def sshLogin(hostName,userName,timeNow,passWord,hostName2,userName2,password2):
     # make a struct that include the host's information to auto ssh login
-    hw_device = {
-    'device_type':'huawei',
+    deviceType = 'autodetect'
+    device = {
+    'device_type':deviceType,
     #'device_type':'huawei_vrpv8',
     'host':hostName,
     'username':userName,
@@ -32,49 +33,90 @@ def sshLogin(hostName,userName,timeNow,passWord,hostName2,userName2,password2):
     print ("\n--------------------------------------------------------")
     print ("正在尝试连接第一台主机，请稍候……")
     print ("--------------------------------------------------------\n")
-    # using ssh to login the target host
-    net_connect = ConnectHandler(**hw_device)
-    
-    print ("\n--------------------------------------------------------")
-    print ("第一台主机连接成功，正在尝试连接第二台主机，请稍候……")
-    print ("--------------------------------------------------------\n")
 
-    # set the commands that need to be executed after login
-    stelnetHost2 = 'stelnet ' + hostName2
-    config_commands1 = ['system', stelnetHost2,userName2]
-    # excute the commands
-    output1 = net_connect.send_config_set(config_commands1)
-    print(output1)
-
-    output2 = net_connect.send_command_timing(passWord2) 
-    print(output2)
-
-    output3 = net_connect.find_prompt()
-    print(output3)
-
-    output4 = net_connect.send_command_timing('system-view')
-    print(output4)
-
-    output5 = net_connect.send_command_timing('wlan')
-    print(output5)
-    
-    output6 = net_connect.send_command_timing(profileName)
-    print(output6)
-
-    # print all the process and Results
-    output = output1 + '\n' + output2 + '\n' + output3 + '\n' + output4 + '\n' + output5 + '\n' + output6
-
-    # log all the process and Results
+    guesser = SSHDetect(**device)
+    deviceType = guesser.autodetect()
     with open('debug.log', 'a+',encoding='utf-8') as f:    
-            f.write('\n--------------------------------------------------------\n')
+            f.write('\n\n\n--------------------------------------------------------\n')
             f.write('--------------------------------------------------------\n')
             f.write(timeNow)
             f.write(',')
             f.write(hostName)
             f.write(',')
             f.write(userName)
+            f.write(',')
+            f.write(deviceType)
+            f.write(',')
+            f.write(str(guesser.potential_matches))
             f.write('\n--------------------------------------------------------\n')
-            f.write(output)
+    print(deviceType)                   # Name of the best device_type to use further
+    print(guesser.potential_matches)    # Dictionary of the whole matching result
+    # using ssh to login the target host
+    net_connect = ConnectHandler(**device)
+    net_connect.send_command_timing('n')
+    print ("\n--------------------------------------------------------")
+    print ("第一台主机连接成功，正在尝试连接第二台主机，请稍候……")
+    print ("--------------------------------------------------------\n")
+
+    # set the commands that need to be executed after login
+    stelnetHost2 = 'stelnet ' + hostName2
+    #config_commands1 = ['system', stelnetHost2,userName2]
+    # excute the commands
+    #output1 = net_connect.send_config_set(config_commands1)
+    #print(output1)
+    allOutput = '\n'
+
+    output = net_connect.send_command_timing('system-view')
+    print(output)
+    allOutput = allOutput + '\n' + output
+
+    output = net_connect.send_command_timing(stelnetHost2) 
+    print(output)
+    allOutput = allOutput + '\n' + output
+    
+    net_connect.send_command_timing('y')
+    net_connect.send_command_timing('n')
+
+    output = net_connect.send_command_timing(userName2) 
+    print(output)
+    allOutput = '\n'
+    allOutput = allOutput + '\n' + output
+
+    output = net_connect.send_command_timing(passWord2) 
+    print(output)
+    allOutput = allOutput + '\n' + output
+
+    output = net_connect.send_command_timing('screen-length 0 temporary')
+    print(output)
+    allOutput = allOutput + '\n' + output
+
+    output = net_connect.send_command_timing('system-view')
+    print(output)
+    allOutput = allOutput + '\n' + output
+
+    output = net_connect.send_command_timing('wlan')
+    print(output)
+    allOutput = allOutput + '\n' + output
+    
+    output = net_connect.send_command_timing(profileName)
+    print(output)
+    allOutput = allOutput + '\n' + output
+    
+    '''
+    i = 0
+    while i < 3 :
+        output = net_connect.send_command_timing('')
+        i = i+1
+        print(output)
+        allOutput = allOutput + '\n' + output
+    '''
+    # print all the process and Results
+    #output = output1 + '\n' + output2 + '\n' + output4 + '\n' + output5 + '\n' + output6
+
+    # log all the process and Results
+    with open('debug.log', 'a+',encoding='utf-8') as f:    
+            f.write('\n--------------------------------------------------------\n')
+            f.write(allOutput)
             f.write('\n--------------------------------------------------------\n')
             f.write('--------------------------------------------------------\n')
             # display the dividing line to split display area
@@ -85,7 +127,7 @@ def sshLogin(hostName,userName,timeNow,passWord,hostName2,userName2,password2):
     makeDir('./cache/')
     # write all the process and Results into cache file
     with open('./cache/' + hostName2 + '-' + timeNow,'w',encoding='utf-8') as f:
-            f.write(output6)
+            f.write(allOutput)
             # display the dividing line to split display area
             print ("\n--------------------------------------------------------")
             print ('cache写入完成，文件位于cache目录下')
@@ -160,4 +202,4 @@ if __name__ == '__main__':
     print ("请按任意键退出……")
     print ("--------------------------------------------------------\n")
     endstr = input()
-    
+    print ("--------------------------------------------------------\n")
