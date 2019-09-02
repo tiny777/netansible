@@ -1,0 +1,24 @@
+# 模拟器中的所有华为网络设备
+[huawei]
+192.168.126.2   tinychen   easy1234
+192.168.126.3   tinychen    easy1234
+192.128.126.4   tinychen    easy1234
+[huawei]
+
+# 模拟器中的所有思科设备
+[cisco]
+192.168.126.5   tinychen    easy1234
+192.168.126.6     tinychen    easy1234
+192.168.126.7   tinychen    easy1234
+192.168.126.8     tinychen    easy1234
+192.168.126.9     tinychen    easy1234
+192.168.126.10     tinychen    easy1234
+[cisio]
+
+# 模拟器中的四台思科c3745
+[c3745]
+192.168.126.7   tinychen    easy1234
+192.168.126.8     tinychen    easy1234
+192.168.126.9     tinychen    easy1234
+192.168.126.10     tinychen    easy1234
+[c3745]
