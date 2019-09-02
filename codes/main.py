@@ -97,7 +97,7 @@ if __name__ == '__main__':
 
     '''
 
-    '''
+    
     # This code uses threading lib to implement multithreading.
     class myThread (threading.Thread):
         def __init__(self, threadID, name, ip):
@@ -107,19 +107,26 @@ if __name__ == '__main__':
             self.ip = ip
         def run(self):
             print ("开始线程：" + self.name)
+            # lock thread to sync
+            threadLock.acquire()
             sshLogin(timeNow,self.ip,'tinychen','easy1234','netcommand2')
+            # unlock thread and start next thread
+            threadLock.release()
             print ("退出线程：" + self.name)
 
+    threadLock = threading.Lock()
+    threads = []
     thread1 = myThread(1, "Thread-192.168.195.2", "192.168.195.2")
     thread2 = myThread(2, "Thread-192.168.195.3", "192.168.195.3")
 
-    # 开启新线程
+    # start new thread
     thread1.start()
     thread2.start()
     thread1.join()
     thread2.join()
     print ("退出主线程")
-    '''
+    
+
     print ("\n--------------------------------------------------------")
     print ("请按任意键退出……")
     print ("--------------------------------------------------------\n")
