@@ -1,0 +1,41 @@
+Sep 02 11:27:04.654 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Sep 02 11:27:04.654 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 3192.
+Sep 02 11:27:05.148 HYPERVISOR: exec_cmd: hypervisor version 
+Sep 02 11:27:05.148 HYPERVISOR: exec_cmd: hypervisor working_dir D:\GitHub\netansible\CiscoTopo\project-files\dynamips 
+Sep 02 11:27:05.148 GENERAL: working_dir=D:\GitHub\netansible\CiscoTopo\project-files\dynamips
+Sep 02 11:27:05.148 HYPERVISOR: exec_cmd: hypervisor working_dir D:\GitHub\netansible\CiscoTopo\project-files\dynamips\1500d704-fb31-4da0-8fb3-df7e899a97f4 
+Sep 02 11:27:05.149 GENERAL: working_dir=D:\GitHub\netansible\CiscoTopo\project-files\dynamips\1500d704-fb31-4da0-8fb3-df7e899a97f4
+Sep 02 11:27:05.149 HYPERVISOR: exec_cmd: vm create c3745-9 5 c3745 
+Sep 02 11:27:05.150 VM: VM c3745-9 created.
+Sep 02 11:27:05.150 HYPERVISOR: exec_cmd: vm set_con_tcp_port c3745-9 5006 
+Sep 02 11:27:05.150 HYPERVISOR: exec_cmd: c3745 get_mac_addr c3745-9 
+Sep 02 11:27:05.151 HYPERVISOR: exec_cmd: vm set_disk0 c3745-9 0 
+Sep 02 11:27:05.151 HYPERVISOR: exec_cmd: vm set_exec_area c3745-9 64 
+Sep 02 11:27:05.151 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:05.151 HYPERVISOR: exec_cmd: vm set_idle_pc c3745-9 0x60b2e23c 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: vm set_ios c3745-9 C:/Users/Mr7th/GNS3/images/IOS/c3745-adventerprisek9_ivs-mz.124-25d.image 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: c3745 set_mac_addr c3745-9 c405.10ac.0000 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: vm set_nvram c3745-9 256 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: vm set_ram c3745-9 256 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:05.152 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 1 0 NM-1FE-TX 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 2 0 NM-4T 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 3 0 NM-16ESW 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 0 16 WIC-1T 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 0 32 WIC-1T 
+Sep 02 11:27:05.153 HYPERVISOR: exec_cmd: vm slot_add_binding c3745-9 0 48 WIC-2T 
+Sep 02 11:27:05.154 HYPERVISOR: exec_cmd: vm set_con_tcp_port c3745-9 5006 
+Sep 02 11:27:07.221 HYPERVISOR: exec_cmd: nio create_udp udp-e1ecd969-93c3-461a-a48c-298a8f2c29d7 10020 127.0.0.1 10021 
+Sep 02 11:27:07.471 HYPERVISOR: exec_cmd: vm slot_add_nio_binding c3745-9 0 0 udp-e1ecd969-93c3-461a-a48c-298a8f2c29d7 
+Sep 02 11:27:07.471 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:47.802 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:47.803 HYPERVISOR: exec_cmd: vm extract_config c3745-9 
+Sep 02 11:27:48.056 HYPERVISOR: exec_cmd: vm get_status c3745-9 
+Sep 02 11:27:48.057 HYPERVISOR: exec_cmd: vm extract_config c3745-9 
+Sep 02 11:27:48.057 HYPERVISOR: exec_cmd: vm delete c3745-9 
+Sep 02 11:27:48.057 VM: VM c3745-9 destroyed.
+Sep 02 11:27:48.058 HYPERVISOR: exec_cmd: hypervisor stop 
+Sep 02 11:27:48.325 HYPERVISOR: Stopped.
+Sep 02 11:27:48.325 GENERAL: reset done.
