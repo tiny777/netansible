@@ -1,0 +1,41 @@
+# 这个是注释
+; 这个也是注释
+
+# 这个all分组里面的是所有的用于模拟测试的数通设备
+[all]
+192.168.126.2 tinychen easy1234
+192.168.126.3 tinychen easy1234
+192.168.126.4 tinychen easy1234
+192.168.126.5 tinychen easy1234
+192.168.126.6 tinychen easy1234
+192.168.126.7 tinychen easy1234
+192.168.126.8 tinychen easy1234
+192.168.126.9 tinychen easy1234
+192.168.126.10 tinychen easy1234
+
+# 这个是所有的思科设备
+[cisco]
+192.168.126.5 tinychen easy1234
+192.168.126.6 tinychen easy1234
+192.168.126.7 tinychen easy1234
+192.168.126.8 tinychen easy1234
+192.168.126.9 tinychen easy1234
+192.168.126.10 tinychen easy1234
+
+# 这个是所有的华为设备
+[huawei]
+192.168.126.2 tinychen easy1234
+192.168.126.3 tinychen easy1234
+192.168.126.4 tinychen easy1234
+
+# 这个是一组思科的c3745
+[c3745]
+192.168.126.7 tinychen easy1234
+192.168.126.8 tinychen easy1234
+192.168.126.9 tinychen easy1234
+192.168.126.10 tinychen easy1234
+
+# 这个是单独的一台华为的AC6605
+[ac6605]
+192.168.126.2 tinychen easy1234
+

@@ -14,26 +14,26 @@
                 <interfaceMap sztype="Ethernet" interfacename="Ethernet" displayNo="4" remoteDisplayNo="2" adapterUid="" isOpen="0" udpPort="0" peerIPAdd="0.0.0.0" peerIP="0" peerPort="0" />
             </slot>
         </dev>
-        <dev id="93D9B16A-FD84-4e3a-BC20-2D376F29AAA1" name="126-4" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-28-33-49" com_port="2002" bootmode="0" cx="456.000000" cy="376.000000" edit_left="483" edit_top="430">
-            <slot number="slot17" isMainBoard="1">
-                <interface sztype="Ethernet" interfacename="GE" count="24" />
-            </slot>
-        </dev>
-        <dev id="B2C6642E-54D2-41d9-A395-F728FDD5792A" name="126-2" poe="0" model="AC6005" settings="" system_mac="00-E0-FC-64-51-CD" com_port="2000" bootmode="0" cx="669.000000" cy="158.000000" edit_left="696" edit_top="212">
-            <slot number="slot17" isMainBoard="1">
-                <interface sztype="Ethernet" interfacename="GE" count="8" />
-            </slot>
-        </dev>
         <dev id="8D9DBEAD-6329-4ec6-9804-376B8A6E3DD7" name="126-3" poe="0" model="AR2240" settings="" system_mac="00-E0-FC-8B-52-57" com_port="2001" bootmode="0" cx="119.000000" cy="488.000000" edit_left="146" edit_top="542">
             <slot number="slot17" isMainBoard="1">
                 <interface sztype="Ethernet" interfacename="GE" count="1" />
                 <interface sztype="Ethernet" interfacename="GE" count="2" />
             </slot>
         </dev>
+        <dev id="93D9B16A-FD84-4e3a-BC20-2D376F29AAA1" name="126-4" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-28-33-49" com_port="2002" bootmode="0" cx="456.000000" cy="376.000000" edit_left="483" edit_top="430">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="B2C6642E-54D2-41d9-A395-F728FDD5792A" name="126-2" poe="0" model="AC6005" settings="" system_mac="00-E0-FC-64-51-CD" com_port="2000" bootmode="0" cx="668.000000" cy="159.000000" edit_left="695" edit_top="213">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="8" />
+            </slot>
+        </dev>
     </devices>
     <lines>
         <line srcDeviceID="C9605430-2DBB-4e0b-A152-C4B29AF55FDD" destDeviceID="B2C6642E-54D2-41d9-A395-F728FDD5792A">
-            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="297.381958" srcBoundRect_Y="176.390533" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="652.826294" tarBoundRect_Y="184.067520" tarOffset_X="-17.000000" tarOffset_Y="-21.000000" />
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="297.378723" srcBoundRect_Y="176.532822" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="651.828491" tarBoundRect_Y="184.972107" tarOffset_X="-17.000000" tarOffset_Y="-21.000000" />
         </line>
         <line srcDeviceID="C9605430-2DBB-4e0b-A152-C4B29AF55FDD" destDeviceID="8D9DBEAD-6329-4ec6-9804-376B8A6E3DD7">
             <interfacePair lineName="Copper" srcIndex="2" srcBoundRectIsMoved="0" srcBoundRect_X="217.036285" srcBoundRect_Y="237.386932" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="0" tarBoundRect_X="156.705063" tarBoundRect_Y="473.164124" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
